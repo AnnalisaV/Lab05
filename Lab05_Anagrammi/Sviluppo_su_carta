@@ -1,0 +1,21 @@
+ANALISI DEL PROBLEMA 'SU CARTA' 
+ANAGRAMMA 
+-Che cosa rappresenta il livello dell'algoritmo ricorsivo?
+ Livello= numero di lettere che compongono la parola che si sta formando, max N 
+ -Com'e' fatta una soluzione parziale?
+  Soluzione parziale= parola composta nel livello precedente + una lettera. 
+-Come riconoscere se la soluzione parziale e' completa?
+ Soluzione completa = la lunghezza della aprola e' pari ad N. La parola.size()== parolaInput.size()
+-Data soluzione parziale come sapere se valida o meno? 
+ La soluzione parziale e' valida quando e' una parola sensata (nel dizionario c'e') e non e' doppia. 
+ Idem per la soluzione completa, deve cioe' essere una parola sensata.
+-Qual e' la regola per generare tutte le soluzioni possibili di livello+1 a partire dalla soluzione
+parziale del livello corrente?
+ Ricorsione! Metodo ricorsivo a cui passare la parola parziale, il livello+1 e le lettere che ancora
+ possono essere usate per comporre l'anagramma. 
+-Qual e' la struttura dati per memorizzare la soluzione?
+ La soluzione parziale/totale va memorizzata in String. L'insieme di parole anagrammate, l'insieme di 
+ soluzioni totali, va memorizzato in una List o Set. 
+  
+ 
+  
