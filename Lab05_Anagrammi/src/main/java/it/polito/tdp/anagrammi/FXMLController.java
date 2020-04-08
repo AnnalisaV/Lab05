@@ -52,7 +52,8 @@ public class FXMLController {
     	
     	List<Parola> anagrammi= new ArrayList<>(this.model.anagramma(txtParola.getText().toLowerCase())); 
     	for (Parola p : anagrammi) {
-    		if (p.isValida()) {
+    		//if (model.parolaValida(p)) { anche con questo metodo
+    		if(p.isValida()) {
     			txtCorretti.appendText(p+"\n");
     		}
     		else txtErrati.appendText(p+"\n");

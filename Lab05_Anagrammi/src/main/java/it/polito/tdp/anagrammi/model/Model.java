@@ -3,9 +3,16 @@ package it.polito.tdp.anagrammi.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.polito.tdp.anagrammi.dao.AnagrammaDAO;
+
 public class Model {
 	private List<Parola> soluzione; 
+	private AnagrammaDAO dao= new AnagrammaDAO(); 
 	
+	// se voglio far fare il controllo al FXML
+	public boolean parolaValida(Parola p) {
+		return this.dao.parolaValida(p); 
+	}
 	
 	/**
 	 * Data una parola, si ottengono tutti i suoi possibili anagrammi
@@ -38,12 +45,17 @@ public class Model {
 	private void formazioneAnagramma(String pezzo, int livello, List<Character> lettereDisponibili) {
 	
 		Parola parola; 
-		
+
 		// caso terminale 
 		if (lettereDisponibili.size()==0) {
 			parola= new Parola(pezzo); 
-			this.soluzione.add(parola); 
+			
+			parola.setValida(dao.parolaValida(parola));
+			
+		this.soluzione.add(parola); 
+		
 		}
+		
 		//situazione generica 
 		for (Character c : lettereDisponibili) {
 			String anagramma= pezzo+c; 

@@ -4,6 +4,7 @@ public class Parola {
 	
 	private String word; 
 	private boolean valida;
+	
 	public String getWord() {
 		return word;
 	}
