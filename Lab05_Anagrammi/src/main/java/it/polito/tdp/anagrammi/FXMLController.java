@@ -1,9 +1,12 @@
 package it.polito.tdp.anagrammi;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import it.polito.tdp.anagrammi.model.Model;
+import it.polito.tdp.anagrammi.model.Parola;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -36,11 +39,34 @@ public class FXMLController {
 
     @FXML
     void calcolaAnagramma(ActionEvent event) {
+    	txtCorretti.clear();
+    	txtErrati.clear();
+    	
+    	//controllo dell'input
+    	if (txtParola.getText().length()==0) {
+    		//non ha inserito nulla
+    		txtCorretti.appendText("Inserire una parola da anagrammare! \n");
+    		txtErrati.appendText("Inserire una parola da anagrammare! \n");
+    		return; 
+    	}
+    	
+    	List<Parola> anagrammi= new ArrayList<>(this.model.anagramma(txtParola.getText().toLowerCase())); 
+    	for (Parola p : anagrammi) {
+    		if (p.isValida()) {
+    			txtCorretti.appendText(p+"\n");
+    		}
+    		else txtErrati.appendText(p+"\n");
+    	}
 
     }
 
+    //pulizia tutti i campi
     @FXML
     void doReset(ActionEvent event) {
+    	
+    	txtParola.clear();
+    	txtCorretti.clear();
+    	txtErrati.clear();
 
     }
 
